@@ -26,7 +26,7 @@
   .subtitle { color: var(--muted); font-size: 1.02rem; margin: 0 0 40px; line-height: 1.7; max-width: 640px; }
   .subtitle em { color: var(--ink); font-style: italic; }
   .cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media (min-width: 700px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 700px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   a.card {
     display: block;
     background: var(--panel);
@@ -72,12 +72,17 @@
   <p class="eyebrow">The Relativistic Investigation Bureau</p>
   <h1>Companion Demonstrations</h1>
   <p class="subtitle">
-    Three interactive physics demos, built to go with <em>The Murder That Hadn't Happened Yet</em>
+    Four interactive physics demos, built to go with <em>The Murder That Hadn't Happened Yet</em>
     (Book 1). Each one dramatizes a real concept from the book's Appendix — no sign-in,
     no account, just drag something until it misbehaves.
   </p>
 
   <div class="cards">
+    <a class="card sr" href="demos/light-clock.html">
+      <span class="tag">Lesson 1 · Special Relativity</span>
+      <h2>The Light Clock</h2>
+      <p>Watch a moving clock’s light pulse take a longer diagonal path. Adjust its speed and compare the clock’s own time with the interval measured on the platform.</p>
+    </a>
     <a class="card sr" href="demos/sr-simultaneity.html">
       <span class="tag">Lesson 2 · Special Relativity</span>
       <h2>Simultaneity &amp; Spacetime</h2>

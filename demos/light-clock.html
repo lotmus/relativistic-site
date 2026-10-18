@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>The Light Clock — Companion Demonstrations</title>
+<style>
+:root{color-scheme:dark;--bg:#0e0b08;--panel:#17130f;--ink:#ece6da;--muted:#aaa194;--line:#3c342a;--blue:#4fd3ff;--gold:#f4c95d;--orange:#e89b58;--focus:#fff1a8}
+*{box-sizing:border-box}body{margin:0;padding:28px 18px 42px;background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,"Iowan Old Style","Palatino Linotype",serif}.wrap{max-width:980px;margin:auto}.eyebrow,.controls,.readout,.back{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}.eyebrow{color:var(--blue);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}h1{color:var(--gold);font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;font-weight:400;margin:0 0 12px}.intro{max-width:70ch;color:var(--muted);margin:0 0 24px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:clamp(14px,3vw,26px)}svg{display:block;width:100%;height:auto}.diagram-title{font:600 22px system-ui,sans-serif;fill:var(--ink)}.small{font:16px system-ui,sans-serif;fill:var(--muted)}.label{font:600 18px system-ui,sans-serif;fill:var(--ink)}.blue{fill:var(--blue)}.gold{fill:var(--gold)}.line{stroke:var(--line);stroke-width:2}.ray-rest{stroke:var(--blue);stroke-width:5;fill:none;stroke-linecap:round}.ray-moving{stroke:var(--gold);stroke-width:5;fill:none;stroke-linecap:round}.mirror{stroke:var(--ink);stroke-width:9;stroke-linecap:round}.pulse-rest{fill:var(--blue)}.pulse-moving{fill:var(--gold)}.controls{display:grid;grid-template-columns:1fr auto;gap:12px 20px;align-items:center;margin-top:18px}.slider-wrap{display:grid;grid-template-columns:auto minmax(100px,1fr) auto;gap:12px;align-items:center}.controls label,.controls output{font-weight:600}.controls input{width:100%;accent-color:var(--gold)}button{border:1px solid var(--line);border-radius:6px;background:#282117;color:var(--ink);font:inherit;padding:9px 14px;cursor:pointer}button:hover{border-color:var(--gold)}:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}.metric{border:1px solid var(--line);border-radius:8px;padding:12px}.metric span{display:block;color:var(--muted);font-size:.8rem}.metric strong{display:block;font-size:1.2rem;font-variant-numeric:tabular-nums}.explain{margin:20px 0 0;max-width:75ch}.equation{color:var(--gold);font-family:Georgia,serif;font-size:1.15em}.note{color:var(--muted);font-size:.9rem;margin:16px 0 0}.back{display:inline-block;color:var(--blue);margin-top:20px;text-underline-offset:3px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:620px){.panel{overflow-x:auto}.panel svg{min-width:720px}.controls{grid-template-columns:1fr}.readout{grid-template-columns:1fr}.diagram-title{font-size:26px}.small{font-size:20px}.label{font-size:22px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<p class="eyebrow">Lesson 1 · Special Relativity</p>
+<h1>The Light Clock</h1>
+<p class="intro">A clock can be made from two mirrors and one pulse of light. Watch the same clock from its own rest frame and from a platform as it moves past. The pulse follows a longer path in the platform frame; because light still travels at <i>c</i>, the platform measures more time between ticks.</p>
+<section class="panel" aria-labelledby="diagram-heading">
+<h2 id="diagram-heading" class="sr-only">Animated comparison of a stationary and moving light clock</h2>
+<svg id="diagram" viewBox="0 0 1000 470" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">A light pulse bouncing between mirrors</title>
+<desc id="svg-desc">At rest, the pulse travels vertically between two mirrors. In the platform frame, the moving clock's mirrors shift sideways, so the pulse follows a longer zigzag path.</desc>
+<text x="220" y="42" text-anchor="middle" class="diagram-title">Clock's rest frame</text>
+<text x="220" y="70" text-anchor="middle" class="small">vertical path · one round-trip tick</text>
+<line x1="55" y1="395" x2="435" y2="395" class="line"/>
+<text x="245" y="430" text-anchor="middle" class="small">clock at rest</text>
+<line x1="220" y1="150" x2="220" y2="245" class="ray-rest"/>
+<line x1="220" y1="245" x2="220" y2="150" class="ray-rest" opacity=".38"/>
+<line x1="178" y1="150" x2="262" y2="150" class="mirror"/>
+<line x1="178" y1="245" x2="262" y2="245" class="mirror"/>
+<circle id="pulseRest" cx="220" cy="197.5" r="10" class="pulse-rest"/>
+<text x="276" y="158" class="small">mirror</text><text x="276" y="253" class="small">mirror</text>
+<line x1="500" y1="95" x2="500" y2="410" class="line" stroke-dasharray="7 8"/>
+<text x="750" y="42" text-anchor="middle" class="diagram-title">Platform frame</text>
+<text x="750" y="70" text-anchor="middle" class="small">moving clock · diagonal light path</text>
+<line x1="550" y1="395" x2="960" y2="395" class="line"/>
+<text x="755" y="430" text-anchor="middle" class="small">platform measures the longer path</text>
+<path id="rayMoving" d="M 560 245 L 650 150 L 740 245" class="ray-moving"/>
+<line id="mirrorTop" x1="638" y1="150" x2="722" y2="150" class="mirror"/>
+<line id="mirrorBottomStart" x1="518" y1="245" x2="602" y2="245" class="mirror" opacity=".42"/>
+<line id="mirrorBottomEnd" x1="728" y1="245" x2="812" y2="245" class="mirror"/>
+<circle id="pulseMoving" cx="630" cy="340" r="10" class="pulse-moving"/>
+<text x="820" y="156" class="small">top mirror</text>
+<text id="motionLabel" x="750" y="112" text-anchor="middle" class="label gold">clock moves at β = 0.60</text>
+<path d="M590 375h120" stroke="var(--gold)" stroke-width="2"/><path d="m710 375-10-6v12z" fill="var(--gold)"/>
+<text x="650" y="370" text-anchor="middle" class="small">motion</text>
+</svg>
+<div class="controls">
+<div class="slider-wrap"><label for="speed">Speed</label><input id="speed" type="range" min="0" max="0.90" step="0.01" value="0.60" aria-describedby="speed-help"><output id="speedValue" for="speed">0.60 c</output></div>
+<button id="motion" type="button" aria-pressed="true">Pause animation</button>
+<span id="speed-help" class="sr-only">Choose the clock's speed as a fraction of the speed of light.</span>
+</div>
+<div class="readout" aria-live="polite">
+<div class="metric"><span>Speed, β = v/c</span><strong id="betaReadout">0.60</strong></div>
+<div class="metric"><span>Lorentz factor, γ</span><strong id="gammaReadout">1.25</strong></div>
+<div class="metric"><span>Platform time ÷ clock time</span><strong id="ratioReadout">1.25×</strong></div>
+</div>
+<p class="explain">For one complete tick, the clock itself measures <span class="equation">Δτ = 2L/c</span>. The platform measures <span class="equation">Δt = γΔτ</span>, where <span class="equation">γ = 1/√(1−β²)</span>. At 0.60<i>c</i>, γ is 1.25: the platform measures 1.25 seconds for each second on the moving clock. The moving observer still sees the clock tick normally.</p>
+<p class="note">Idealised light clock, moving inertially through flat spacetime; the mirrors are separated perpendicular to the direction of motion. The drawing is schematic and not to scale.</p>
+</section>
+<a class="back" href="../">← All companion demonstrations</a>
+</main>
+<script>
+(() => {
+  const slider = document.getElementById('speed');
+  const speedValue = document.getElementById('speedValue');
+  const betaReadout = document.getElementById('betaReadout');
+  const gammaReadout = document.getElementById('gammaReadout');
+  const ratioReadout = document.getElementById('ratioReadout');
+  const motionLabel = document.getElementById('motionLabel');
+  const path = document.getElementById('rayMoving');
+  const topMirror = document.getElementById('mirrorTop');
+  const bottomStart = document.getElementById('mirrorBottomStart');
+  const bottomEnd = document.getElementById('mirrorBottomEnd');
+  const pulseMoving = document.getElementById('pulseMoving');
+  const pulseRest = document.getElementById('pulseRest');
+  const button = document.getElementById('motion');
+  const x0 = 560, yTop = 150, yBottom = 245, length = yBottom - yTop;
+  let running = !matchMedia("(prefers-reduced-motion: reduce)").matches, last = 0, phase = 0, beta = Number(slider.value), gamma = 1 / Math.sqrt(1 - beta * beta);
+  function update() {
+    beta = Number(slider.value);
+    gamma = 1 / Math.sqrt(1 - beta * beta);
+    const shift = beta * gamma * length;
+    const xMid = x0 + shift;
+    const xEnd = x0 + 2 * shift;
+    path.setAttribute('d', `M ${x0} ${yBottom} L ${xMid} ${yTop} L ${xEnd} ${yBottom}`);
+    topMirror.setAttribute('x1', xMid - 42); topMirror.setAttribute('x2', xMid + 42);
+    bottomEnd.setAttribute('x1', xEnd - 42); bottomEnd.setAttribute('x2', xEnd + 42);
+    bottomStart.setAttribute('x1', x0 - 42); bottomStart.setAttribute('x2', x0 + 42);
+    speedValue.value = `${beta.toFixed(2)} c`;
+    speedValue.textContent = `${beta.toFixed(2)} c`;
+    betaReadout.textContent = beta.toFixed(2);
+    gammaReadout.textContent = gamma.toFixed(2);
+    ratioReadout.textContent = `${gamma.toFixed(2)}×`;
+    motionLabel.textContent = `clock moves at β = ${beta.toFixed(2)}`;
+  }
+  button.textContent = running ? 'Pause animation' : 'Play animation';
+  button.setAttribute('aria-pressed', String(running));
+  slider.addEventListener('input', update);
+  button.addEventListener('click', () => {
+    running = !running;
+    button.textContent = running ? 'Pause animation' : 'Play animation';
+    button.setAttribute('aria-pressed', String(running));
+  });
+  function frame(now) {
+    if (running && last) phase = (phase + (now - last) / (2200 * gamma)) % 1;
+    last = now;
+    const dx = phase < .5 ? phase * 2 : (phase - .5) * 2;
+    const xMid = x0 + beta * gamma * length;
+    const xEnd = x0 + 2 * beta * gamma * length;
+    if (phase < .5) {
+      pulseMoving.setAttribute('cx', x0 + (xMid - x0) * dx);
+      pulseMoving.setAttribute('cy', yBottom + (yTop - yBottom) * dx);
+    } else {
+      pulseMoving.setAttribute('cx', xMid + (xEnd - xMid) * dx);
+      pulseMoving.setAttribute('cy', yTop + (yBottom - yTop) * dx);
+    }
+    const restPhase = (phase * 2) % 1;
+    pulseRest.setAttribute('cy', restPhase < .5 ? yBottom - 2 * restPhase * length : yTop + 2 * (restPhase - .5) * length);
+    requestAnimationFrame(frame);
+  }
+  update();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
